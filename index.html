@@ -5,26 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ek Surprise Tumhare Liye 💗</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marck+Script&family=Poppins:wght@300;400;500;600&family=Baloo+2:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marck+Script&family=Poppins:wght@300;400;500;600&family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --plum:#3d2233;
-    --plum-deep:#25141f;
-    --blush:#e8b4bc;
-    --blush-soft:#f3d9dd;
-    --paper:#fffaf7;
-    --gold:#c9a96e;
-    --ink:#3a2a30;
+    --cream:#fff8f2;
+    --blush:#ffd9e3;
+    --blush-soft:#ffeef2;
+    --pink:#ff8fae;
+    --pink-deep:#e8607f;
+    --lavender:#d9c9f5;
+    --lavender-deep:#b79ce8;
+    --gold:#f5c76e;
+    --plum:#5c3a52;
+    --plum-soft:#8a6478;
+    --paper:#fffdfb;
+    --ink:#4a3244;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   body{
     min-height:100vh;
-    background:radial-gradient(ellipse at 50% 20%, #5c3448 0%, var(--plum-deep) 75%);
+    background:var(--cream);
     font-family:'Poppins',sans-serif;
     overflow-x:hidden;
     color:var(--ink);
+    position:relative;
   }
   @media (prefers-reduced-motion: reduce){ *{animation-duration:.01ms !important; transition-duration:.01ms !important;} }
+
+  /* ---------------- ambient blob background (single orchestrated motion) ---------------- */
+  .blob{position:fixed; border-radius:50%; filter:blur(50px); opacity:.55; z-index:0; pointer-events:none;}
+  .blob-1{width:340px; height:340px; background:var(--blush); top:-90px; left:-90px; animation:driftA 18s ease-in-out infinite;}
+  .blob-2{width:300px; height:300px; background:var(--lavender); bottom:-100px; right:-80px; animation:driftB 22s ease-in-out infinite;}
+  .blob-3{width:220px; height:220px; background:var(--gold); top:40%; left:60%; opacity:.3; animation:driftA 26s ease-in-out infinite reverse;}
+  @keyframes driftA{0%,100%{transform:translate(0,0);} 50%{transform:translate(40px,30px);}}
+  @keyframes driftB{0%,100%{transform:translate(0,0);} 50%{transform:translate(-30px,-40px);}}
 
   .scene{
     display:none;
@@ -35,70 +49,73 @@
     justify-content:center;
     padding:40px 20px;
     position:relative;
+    z-index:1;
   }
   .scene.active{display:flex;}
   .fade{animation:fadeIn .8s ease both;}
   @keyframes fadeIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
 
   h2.title{
-    font-family:'Cormorant Garamond',serif;
-    color:var(--blush-soft);
-    font-size:32px;
-    font-style:italic;
+    font-family:'Baloo 2',sans-serif;
+    color:var(--pink-deep);
+    font-size:30px;
+    font-weight:700;
     text-align:center;
     margin-bottom:10px;
   }
   p.sub{
-    color:#d8b9c1;
+    color:var(--plum-soft);
     font-family:'Poppins',sans-serif;
-    font-size:14px;
+    font-size:14.5px;
     text-align:center;
     margin-bottom:30px;
     max-width:340px;
+    line-height:1.6;
   }
 
   .btn{
-    font-family:'Poppins',sans-serif;
-    font-weight:500;
-    font-size:15px;
-    padding:14px 34px;
-    background:linear-gradient(120deg,var(--gold),#e0bd85);
-    color:var(--plum-deep);
+    font-family:'Baloo 2',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    padding:14px 36px;
+    background:linear-gradient(120deg,var(--pink),var(--pink-deep));
+    color:#fff;
     border:none;
     border-radius:40px;
     cursor:pointer;
-    box-shadow:0 10px 24px rgba(0,0,0,0.3);
-    transition:transform .25s ease, box-shadow .25s ease;
+    box-shadow:0 5px 0 var(--pink-deep), 0 14px 26px rgba(232,96,127,0.35);
+    transition:transform .2s ease, box-shadow .2s ease;
   }
-  .btn:hover{transform:translateY(-2px); box-shadow:0 14px 30px rgba(0,0,0,0.35);}
-  .btn:active{transform:translateY(0);}
+  .btn:hover{transform:translateY(-2px);}
+  .btn:active{transform:translateY(4px); box-shadow:0 1px 0 var(--pink-deep), 0 6px 14px rgba(232,96,127,0.3);}
 
   /* ---------------- SOUND TOGGLE ---------------- */
   #soundToggle{
     position:fixed; top:16px; right:16px; z-index:200;
     width:46px; height:46px; border-radius:50%;
-    background:rgba(255,255,255,0.12);
-    border:1px solid rgba(232,180,188,0.4);
-    color:var(--blush-soft);
+    background:var(--paper);
+    border:2px solid var(--blush);
+    color:var(--pink-deep);
     font-size:19px;
     display:flex; align-items:center; justify-content:center;
     cursor:pointer;
-    backdrop-filter:blur(4px);
+    box-shadow:0 6px 16px rgba(232,96,127,0.2);
   }
   .music-note{
-    position:fixed; font-size:14px; color:var(--blush-soft);
+    position:fixed; font-size:14px; color:var(--pink-deep);
     opacity:0; pointer-events:none; z-index:2;
   }
-  @keyframes noteFloat{ 0%{transform:translateY(0) rotate(0deg); opacity:0;} 15%{opacity:.7;} 100%{transform:translateY(-70px) translateX(20px) rotate(25deg); opacity:0;} }
+  @keyframes noteFloat{ 0%{transform:translateY(0) rotate(0deg); opacity:0;} 15%{opacity:.8;} 100%{transform:translateY(-70px) translateX(20px) rotate(25deg); opacity:0;} }
 
   /* ---------------- GAME ---------------- */
   #game-area{
     position:relative; width:100%; max-width:420px; height:60vh; max-height:520px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border:1px solid rgba(232,180,188,0.25); border-radius:18px; overflow:hidden;
+    background:linear-gradient(180deg, var(--blush-soft), #fff);
+    border:2px solid var(--blush); border-radius:24px; overflow:hidden;
+    box-shadow:0 16px 34px rgba(232,96,127,0.15);
   }
-  .score-bar{display:flex; align-items:center; gap:8px; margin-bottom:16px; color:var(--blush-soft); font-size:15px; font-weight:500;}
-  .game-heart{position:absolute; font-size:28px; cursor:pointer; user-select:none; filter:drop-shadow(0 3px 6px rgba(0,0,0,0.35)); animation-timing-function:linear; animation-fill-mode:forwards; top:-40px;}
+  .score-bar{display:flex; align-items:center; gap:8px; margin-bottom:16px; color:var(--pink-deep); font-family:'Baloo 2',sans-serif; font-size:16px; font-weight:600;}
+  .game-heart{position:absolute; font-size:28px; cursor:pointer; user-select:none; filter:drop-shadow(0 3px 6px rgba(0,0,0,0.15)); animation-timing-function:linear; animation-fill-mode:forwards; top:-40px;}
   @keyframes fallGame{ to{ transform:translateY(calc(60vh + 80px)); } }
   .pop{ animation:pop .35s ease forwards !important; }
   @keyframes pop{ to{ transform:scale(2.2); opacity:0; } }
@@ -108,11 +125,11 @@
   /* ---------------- ENVELOPE ---------------- */
   .envelope-wrap{cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:26px;}
   .envelope{position:relative; width:190px; height:124px;}
-  .env-body{position:absolute; inset:0; background:var(--blush-soft); border-radius:6px; box-shadow:0 20px 45px rgba(0,0,0,0.45);}
-  .env-body::before{content:''; position:absolute; inset:0; background:linear-gradient(135deg, transparent 49%, rgba(0,0,0,0.06) 50%), linear-gradient(-135deg, transparent 49%, rgba(0,0,0,0.06) 50%);}
+  .env-body{position:absolute; inset:0; background:var(--blush-soft); border-radius:10px; box-shadow:0 20px 45px rgba(232,96,127,0.25); border:2px solid var(--blush);}
+  .env-body::before{content:''; position:absolute; inset:0; background:linear-gradient(135deg, transparent 49%, rgba(232,96,127,0.06) 50%), linear-gradient(-135deg, transparent 49%, rgba(232,96,127,0.06) 50%); border-radius:8px;}
   .env-flap{position:absolute; top:0; left:0; right:0; height:0; border-left:95px solid transparent; border-right:95px solid transparent; border-top:70px solid var(--blush); transform-origin:top; transition:transform .9s cubic-bezier(.6,-0.2,.3,1.4); z-index:2;}
-  .heart-seal{position:absolute; top:52px; left:50%; transform:translate(-50%,0); width:24px; height:24px; z-index:3; transition:opacity .4s ease, transform .4s ease;}
-  .heart-seal svg{width:100%; height:100%; fill:#8c3b4a; filter:drop-shadow(0 2px 3px rgba(0,0,0,0.3));}
+  .heart-seal{position:absolute; top:52px; left:50%; transform:translate(-50%,0); width:26px; height:26px; z-index:3; transition:opacity .4s ease, transform .4s ease;}
+  .heart-seal svg{width:100%; height:100%; fill:var(--pink-deep); filter:drop-shadow(0 2px 3px rgba(0,0,0,0.2));}
   .envelope-wrap.open .env-flap{transform:rotateX(180deg);}
   .envelope-wrap.open .heart-seal{opacity:0; transform:translate(-50%,-10px) scale(0.6);}
 
@@ -121,31 +138,31 @@
   .card{
     width:100%; max-width:560px;
     background:var(--paper);
-    border-radius:16px;
-    box-shadow:0 30px 70px rgba(0,0,0,0.4);
+    border-radius:22px;
+    box-shadow:0 30px 60px rgba(92,58,82,0.18);
     padding:44px 36px 36px;
     position:relative;
-    border:2px solid var(--blush-soft);
+    border:2px solid var(--blush);
   }
   .card::before{
     content:''; position:absolute; top:-2px; left:-2px; right:-2px; height:8px;
-    background:linear-gradient(90deg,var(--gold),var(--blush) 50%,var(--gold));
-    border-radius:16px 16px 0 0;
+    background:linear-gradient(90deg,var(--gold),var(--pink) 50%,var(--lavender-deep));
+    border-radius:22px 22px 0 0;
   }
   .card::after{
     content:'💌'; position:absolute; top:-22px; left:50%; transform:translateX(-50%);
-    font-size:30px; background:var(--paper); width:44px; height:44px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; box-shadow:0 6px 14px rgba(0,0,0,0.25);
+    font-size:28px; background:var(--paper); width:44px; height:44px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 6px 14px rgba(232,96,127,0.25);
   }
-  .kicker{font-family:'Cormorant Garamond',serif; font-style:italic; color:#a67f8a; font-size:14px; margin:12px 0 6px;}
-  h1.letter-h{font-family:'Cormorant Garamond',serif; font-weight:600; font-size:34px; color:var(--plum); line-height:1.15; margin-bottom:22px; border-bottom:1px dashed #e6c7cb; padding-bottom:18px;}
+  .kicker{font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--plum-soft); font-size:14px; margin:12px 0 6px;}
+  h1.letter-h{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:32px; color:var(--pink-deep); line-height:1.2; margin-bottom:22px; border-bottom:2px dashed var(--blush); padding-bottom:18px;}
   .letter-body p{font-family:'Cormorant Garamond',serif; font-size:19px; line-height:1.8; color:var(--ink); margin-bottom:16px;}
-  .promise-box{margin:22px 0; padding:18px 20px; background:var(--blush-soft); border-left:3px solid var(--gold); border-radius:10px;}
+  .promise-box{margin:22px 0; padding:18px 20px; background:var(--blush-soft); border-left:4px solid var(--gold); border-radius:14px;}
   .promise-box p{font-family:'Cormorant Garamond',serif; font-size:17px; line-height:1.65; color:var(--plum); margin:0;}
   .promise-box p+p{margin-top:8px;}
   .sign-off{margin-top:28px; text-align:right;}
-  .sign-off .from{font-family:'Marck Script',cursive; font-size:30px; color:var(--plum); display:block;}
-  .sign-off .line1{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:#6b4c56;}
+  .sign-off .from{font-family:'Marck Script',cursive; font-size:30px; color:var(--pink-deep); display:block;}
+  .sign-off .line1{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--plum-soft);}
 
   .mascot{
     flex:0 0 auto; width:110px; display:flex; flex-direction:column; align-items:center;
@@ -158,26 +175,26 @@
   @media (max-width:640px){ .mascot{display:none;} }
 
   /* ---------------- MEMORIES ---------------- */
-  .memory-frame{width:100%; max-width:340px; height:340px; border-radius:18px; background:linear-gradient(135deg,var(--blush-soft),var(--blush)); box-shadow:0 20px 50px rgba(0,0,0,0.35); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:20px; text-align:center; border:3px solid var(--paper); position:relative; overflow:hidden;}
+  .memory-frame{width:100%; max-width:340px; height:340px; border-radius:24px; background:linear-gradient(135deg,var(--blush-soft),var(--blush)); box-shadow:0 20px 45px rgba(232,96,127,0.2); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:20px; text-align:center; border:4px solid var(--paper); outline:2px solid var(--blush); position:relative; overflow:hidden;}
   .memory-frame.has-photo{padding:0;}
-  .memory-frame.has-photo img{width:100%; height:100%; object-fit:cover; border-radius:14px;}
-  .memory-frame.has-photo .memory-caption{position:absolute; left:0; right:0; bottom:0; margin:0; padding:16px 14px; color:#fff; background:linear-gradient(transparent, rgba(0,0,0,0.6)); border-radius:0 0 14px 14px;}
+  .memory-frame.has-photo img{width:100%; height:100%; object-fit:cover; border-radius:20px;}
+  .memory-frame.has-photo .memory-caption{position:absolute; left:0; right:0; bottom:0; margin:0; padding:16px 14px; color:#fff; background:linear-gradient(transparent, rgba(74,50,68,0.72)); border-radius:0 0 20px 20px;}
   .memory-icon{font-size:52px;}
   .memory-caption{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--plum);}
   .memory-nav{display:flex; align-items:center; gap:22px; margin-top:22px;}
-  .nav-arrow{width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.12); border:1px solid rgba(232,180,188,0.4); color:var(--blush-soft); font-size:18px; display:flex; align-items:center; justify-content:center; cursor:pointer;}
+  .nav-arrow{width:42px; height:42px; border-radius:50%; background:var(--paper); border:2px solid var(--blush); color:var(--pink-deep); font-size:18px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 14px rgba(232,96,127,0.15);}
   .dots{display:flex; gap:6px;}
-  .dot{width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.25);}
-  .dot.on{background:var(--gold);}
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--blush);}
+  .dot.on{background:var(--pink-deep);}
 
   /* ---------------- CUTE MESSAGES ---------------- */
-  .msg-card{width:100%; max-width:360px; background:var(--paper); border-radius:24px; padding:44px 30px; text-align:center; box-shadow:0 25px 55px rgba(0,0,0,0.35); border:2px solid var(--blush-soft);}
+  .msg-card{width:100%; max-width:360px; background:var(--paper); border-radius:28px; padding:44px 30px; text-align:center; box-shadow:0 25px 50px rgba(232,96,127,0.2); border:2px solid var(--blush);}
   .msg-emoji{font-size:46px; margin-bottom:16px; display:block; animation:wobble 1.6s ease-in-out infinite;}
   @keyframes wobble{0%,100%{transform:rotate(-6deg);} 50%{transform:rotate(6deg);}}
-  .msg-text{font-family:'Cormorant Garamond',serif; font-size:26px; font-style:italic; color:var(--plum); line-height:1.4;}
-  .msg-count{margin-top:22px; color:var(--blush-soft); font-size:13px; letter-spacing:1px;}
+  .msg-text{font-family:'Baloo 2',sans-serif; font-size:24px; font-weight:600; color:var(--pink-deep); line-height:1.4;}
+  .msg-count{margin-top:22px; color:var(--plum-soft); font-size:13px; letter-spacing:1px;}
 
-  /* ---------------- FINAL (gif-style animated hearts) ---------------- */
+  /* ---------------- FINAL (animated hearts) ---------------- */
   .final-gif{position:relative; width:220px; height:220px; display:flex; align-items:center; justify-content:center;}
   .final-heart{font-size:76px; animation:beat 1.1s ease-in-out infinite; z-index:2;}
   @keyframes beat{0%,100%{transform:scale(1);} 50%{transform:scale(1.14);}}
@@ -189,8 +206,8 @@
     from{ transform:rotate(0deg) translateX(95px) rotate(0deg); }
     to{ transform:rotate(360deg) translateX(95px) rotate(-360deg); }
   }
-  .final-text{font-family:'Marck Script',cursive; color:var(--blush-soft); font-size:48px; margin-top:8px;}
-  .final-sub{font-family:'Cormorant Garamond',serif; font-style:italic; color:#d8b9c1; margin-top:12px; font-size:17px;}
+  .final-text{font-family:'Marck Script',cursive; color:var(--pink-deep); font-size:48px; margin-top:8px;}
+  .final-sub{font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--plum-soft); margin-top:12px; font-size:17px;}
 
   .floaty{position:fixed; bottom:-40px; font-size:18px; opacity:0; pointer-events:none; z-index:1;}
   @keyframes floatUp{ 0%{transform:translateY(0) rotate(0deg); opacity:0;} 10%{opacity:.8;} 100%{transform:translateY(-105vh) rotate(30deg); opacity:0;} }
@@ -202,7 +219,14 @@
 </head>
 <body>
 
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
 <div id="soundToggle" onclick="toggleSound()">🔊</div>
+
+<!-- background song: put your song link in place of SONG_URL below in the script -->
+<audio id="bgMusic" preload="auto" loop></audio>
 
 <!-- START -->
 <section class="scene active" id="sec-start">
@@ -305,43 +329,58 @@
 </section>
 
 <script>
-/* ================= AUDIO ENGINE ================= */
-let audioCtx = null;
+
+const SONG_URL = "https://pagalnew.com/128-downloads/26457";
+
+const bgMusic = document.getElementById('bgMusic');
+bgMusic.src = SONG_URL;
+bgMusic.loop = true;
+bgMusic.volume = 0.45;
+
 let muted = false;
-let melodyIndex = 0;
-let melodyTimer = null;
+let audioUnlocked = false;
+let noteInterval = null;
 
-const melody = [
-  [523.25,0.42],[587.33,0.42],[659.25,0.42],[523.25,0.42],
-  [659.25,0.42],[698.46,0.42],[783.99,0.85],
-  [659.25,0.42],[587.33,0.42],[523.25,0.42],[493.88,0.42],
-  [523.25,1.3],
-  [659.25,0.42],[698.46,0.42],[783.99,0.42],[880.0,0.42],
-  [783.99,0.42],[698.46,0.42],[659.25,0.85],
-  [587.33,0.42],[523.25,0.42],[493.88,0.42],[440.0,1.3]
-];
+/* spawn a little floating music-note while the song is actually playing */
+bgMusic.addEventListener('play', ()=>{
+  clearInterval(noteInterval);
+  noteInterval = setInterval(spawnMusicNote, 2200);
+});
+bgMusic.addEventListener('pause', ()=>{ clearInterval(noteInterval); noteInterval = null; });
 
-function initAudio(){
-  try{
-    if(!audioCtx){
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    if(audioCtx.state === 'suspended'){
-      audioCtx.resume();
-    }
-    /* silent 1-sample buffer unlocks audio hardware on strict mobile browsers (iOS Safari etc.) */
-    const buffer = audioCtx.createBuffer(1, 1, 22050);
-    const src = audioCtx.createBufferSource();
-    src.buffer = buffer;
-    src.connect(audioCtx.destination);
-    src.start(0);
-  }catch(e){
-    console.warn('Audio not available on this browser:', e);
+function unlockAudio(){
+  if(audioUnlocked) return;
+  audioUnlocked = true;
+  initSfxContext();
+}
+document.addEventListener('touchstart', unlockAudio, {once:true, passive:true});
+document.addEventListener('click', unlockAudio, {once:true});
+
+function startMusic(){
+  if(muted) return;
+  bgMusic.play().catch(()=>{ /* browser blocked autoplay, will retry on next tap */ });
+}
+
+function toggleSound(){
+  muted = !muted;
+  document.getElementById('soundToggle').textContent = muted ? '🔇' : '🔊';
+  if(muted){
+    bgMusic.pause();
+  } else {
+    bgMusic.play().catch(()=>{});
   }
 }
-/* unlock on the very first tap anywhere, as a safety net */
-document.addEventListener('touchstart', initAudio, {once:true, passive:true});
-document.addEventListener('click', initAudio, {once:true});
+
+/* ---------------- short sound effects (Web Audio) ---------------- */
+let audioCtx = null;
+function initSfxContext(){
+  try{
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === 'suspended') audioCtx.resume();
+  }catch(e){
+    console.warn('Audio effects not available on this browser:', e);
+  }
+}
 
 function playTone(freq, startTime, duration, type, vol){
   if(muted || !audioCtx) return;
@@ -356,22 +395,6 @@ function playTone(freq, startTime, duration, type, vol){
   gain.connect(audioCtx.destination);
   osc.start(startTime);
   osc.stop(startTime+duration+0.05);
-}
-
-function scheduleMelody(){
-  const [freq, dur] = melody[melodyIndex % melody.length];
-  if(audioCtx){
-    const t = audioCtx.currentTime;
-    playTone(freq, t, dur*0.9, 'sine', 0.06);
-    spawnMusicNote();
-  }
-  melodyIndex++;
-  melodyTimer = setTimeout(scheduleMelody, dur*1000);
-}
-
-function startMusic(){
-  initAudio();
-  if(!melodyTimer) scheduleMelody();
 }
 
 function playPop(){
@@ -391,15 +414,15 @@ function playPop(){
   osc.stop(t+0.16);
 }
 function playChime(){
-  if(!audioCtx) return;
+  if(!audioCtx || muted) return;
   const t = audioCtx.currentTime;
   [523.25,659.25,783.99,1046.5].forEach((f,i)=>playTone(f, t+i*0.12, 0.4, 'triangle', 0.16));
 }
 function playDing(){
-  if(!audioCtx) return;
+  if(!audioCtx || muted) return;
   const t = audioCtx.currentTime;
-  playTone(1046.5, t, 0.28, 'sine', 0.15);
-  playTone(1568, t+0.05, 0.22, 'sine', 0.1);
+  playTone(1046.5, t, 0.28, 'sine', 0.13);
+  playTone(1568, t+0.05, 0.22, 'sine', 0.09);
 }
 function playWhoosh(){
   if(!audioCtx || muted) return;
@@ -413,14 +436,9 @@ function playWhoosh(){
   filter.type='bandpass';
   filter.frequency.value=1200;
   const gain = audioCtx.createGain();
-  gain.gain.value = 0.35;
+  gain.gain.value = 0.3;
   noise.connect(filter); filter.connect(gain); gain.connect(audioCtx.destination);
   noise.start();
-}
-
-function toggleSound(){
-  muted = !muted;
-  document.getElementById('soundToggle').textContent = muted ? '🔇' : '🔊';
 }
 
 function spawnMusicNote(){
@@ -442,6 +460,7 @@ function goTo(id){
 }
 
 function beginExperience(){
+  unlockAudio();
   startMusic();
   goTo('sec-game');
   startGame();
@@ -451,6 +470,8 @@ function restartExperience(){
   clearInterval(spawnInterval);
   clearInterval(memAutoTimer);
   clearInterval(msgTimer);
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
   score = 0;
   memIndex = 0;
   msgIndex = 0;
@@ -475,6 +496,7 @@ const target = 10;
 let spawnInterval;
 
 function startGame(){
+  clearInterval(spawnInterval);
   score = 0;
   document.getElementById('scoreNum').textContent = 0;
   const area = document.getElementById('game-area');
@@ -535,12 +557,10 @@ document.getElementById('envelopeWrap').addEventListener('click', function(){
 
 /* ================= MEMORIES ================= */
 /* TO ADD YOUR OWN PHOTOS:
-   1) Put your photo files (e.g. photo1.jpg, photo2.jpg) in the SAME folder as this html file.
-   2) Below, add "photo:'photo1.jpg'" to any memory — the icon is used only when photo is empty.
-   Example: {photo:'photo1.jpg', caption:'Wo pehli mulaqat'} */
+   Replace the photo URL with your own link, and edit the caption text. */
 const memories = [
-  {photo:'https://i.ibb.co/Y7xRJ9jN/IMG-20260907-214026.jpg', icon:'', caption:'wo time jab mai Flirt krta tha tumhare saath'},
-  {photo:'https://i.ibb.co/93tprJTc/Screenshot-2026-0907-214103.png', icon:'', caption:'Wo din Jab Am ki jagah ki Pm ho gaya tha'},
+  {photo:'https://i.ibb.co/Y7xRJ9jN/IMG-20260907-214026.jpg', icon:'', caption:'wo time jab mai Flirt krta tha tumhare saath'},
+  {photo:'https://i.ibb.co/93tprJTc/Screenshot-2026-0907-214103.png', icon:'', caption:'Wo din Jab Am ki jagah ki Pm ho gaya tha'},
   {photo:'https://i.ibb.co/xKKT8GML/IMG-20260908-071255.jpg', icon:'🌆', caption:'Wo din jo hum naye naye mile the'},
   {photo:'https://i.ibb.co/7xNqJB4X/file-00000000d64c8211b5f38d1cd221de22.png', icon:'🎂', caption:'Wo Din Jab mene tumhare finger ki photo mangi aur tumne hasi lagi thi'},
   {photo:'https://i.ibb.co/DfhDqNkS/IMG-20260908-072151.jpg', icon:'🥰', caption:'Wo din jab mene tumhe first gift diya tha aur tum bahut happy hui mai kabhi nhi bhul sakta'}
