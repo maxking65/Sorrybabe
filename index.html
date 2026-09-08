@@ -32,7 +32,6 @@
   }
   @media (prefers-reduced-motion: reduce){ *{animation-duration:.01ms !important; transition-duration:.01ms !important;} }
 
-  /* ---------------- ambient blob background (single orchestrated motion) ---------------- */
   .blob{position:fixed; border-radius:50%; filter:blur(50px); opacity:.55; z-index:0; pointer-events:none;}
   .blob-1{width:340px; height:340px; background:var(--blush); top:-90px; left:-90px; animation:driftA 18s ease-in-out infinite;}
   .blob-2{width:300px; height:300px; background:var(--lavender); bottom:-100px; right:-80px; animation:driftB 22s ease-in-out infinite;}
@@ -89,7 +88,6 @@
   .btn:hover{transform:translateY(-2px);}
   .btn:active{transform:translateY(4px); box-shadow:0 1px 0 var(--pink-deep), 0 6px 14px rgba(232,96,127,0.3);}
 
-  /* ---------------- SOUND TOGGLE ---------------- */
   #soundToggle{
     position:fixed; top:16px; right:16px; z-index:200;
     width:46px; height:46px; border-radius:50%;
@@ -107,7 +105,6 @@
   }
   @keyframes noteFloat{ 0%{transform:translateY(0) rotate(0deg); opacity:0;} 15%{opacity:.8;} 100%{transform:translateY(-70px) translateX(20px) rotate(25deg); opacity:0;} }
 
-  /* ---------------- GAME ---------------- */
   #game-area{
     position:relative; width:100%; max-width:420px; height:60vh; max-height:520px;
     background:linear-gradient(180deg, var(--blush-soft), #fff);
@@ -122,7 +119,6 @@
 
   .burst-heart{position:fixed; font-size:22px; top:50%; left:50%; pointer-events:none; z-index:20;}
 
-  /* ---------------- ENVELOPE ---------------- */
   .envelope-wrap{cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:26px;}
   .envelope{position:relative; width:190px; height:124px;}
   .env-body{position:absolute; inset:0; background:var(--blush-soft); border-radius:10px; box-shadow:0 20px 45px rgba(232,96,127,0.25); border:2px solid var(--blush);}
@@ -133,7 +129,6 @@
   .envelope-wrap.open .env-flap{transform:rotateX(180deg);}
   .envelope-wrap.open .heart-seal{opacity:0; transform:translate(-50%,-10px) scale(0.6);}
 
-  /* ---------------- LETTER (lovely card + mascot) ---------------- */
   .letter-wrap{display:flex; align-items:flex-start; gap:18px; max-width:680px; width:100%; justify-content:center;}
   .card{
     width:100%; max-width:560px;
@@ -160,9 +155,12 @@
   .promise-box{margin:22px 0; padding:18px 20px; background:var(--blush-soft); border-left:4px solid var(--gold); border-radius:14px;}
   .promise-box p{font-family:'Cormorant Garamond',serif; font-size:17px; line-height:1.65; color:var(--plum); margin:0;}
   .promise-box p+p{margin-top:8px;}
-  .sign-off{margin-top:28px; text-align:right;}
+
+  .sign-off{margin-top:28px; display:flex; align-items:center; justify-content:space-between; gap:12px;}
   .sign-off .from{font-family:'Marck Script',cursive; font-size:30px; color:var(--pink-deep); display:block;}
-  .sign-off .line1{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--plum-soft);}
+  .sign-off .line1{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--plum-soft); display:block;}
+  .sign-gif{width:90px; height:90px; object-fit:contain; background:transparent; border:none; outline:none; box-shadow:none; flex-shrink:0;}
+  .sign-text{display:flex; flex-direction:column; align-items:flex-end; text-align:right;}
 
   .mascot{
     flex:0 0 auto; width:110px; display:flex; flex-direction:column; align-items:center;
@@ -174,7 +172,6 @@
   @keyframes heartPulse{0%,100%{transform:scale(1);} 50%{transform:scale(1.25);}}
   @media (max-width:640px){ .mascot{display:none;} }
 
-  /* ---------------- MEMORIES ---------------- */
   .memory-frame{width:100%; max-width:340px; height:340px; border-radius:24px; background:linear-gradient(135deg,var(--blush-soft),var(--blush)); box-shadow:0 20px 45px rgba(232,96,127,0.2); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:20px; text-align:center; border:4px solid var(--paper); outline:2px solid var(--blush); position:relative; overflow:hidden;}
   .memory-frame.has-photo{padding:0;}
   .memory-frame.has-photo img{width:100%; height:100%; object-fit:cover; border-radius:20px;}
@@ -187,14 +184,12 @@
   .dot{width:7px; height:7px; border-radius:50%; background:var(--blush);}
   .dot.on{background:var(--pink-deep);}
 
-  /* ---------------- CUTE MESSAGES ---------------- */
   .msg-card{width:100%; max-width:360px; background:var(--paper); border-radius:28px; padding:44px 30px; text-align:center; box-shadow:0 25px 50px rgba(232,96,127,0.2); border:2px solid var(--blush);}
   .msg-emoji{font-size:46px; margin-bottom:16px; display:block; animation:wobble 1.6s ease-in-out infinite;}
   @keyframes wobble{0%,100%{transform:rotate(-6deg);} 50%{transform:rotate(6deg);}}
   .msg-text{font-family:'Baloo 2',sans-serif; font-size:24px; font-weight:600; color:var(--pink-deep); line-height:1.4;}
   .msg-count{margin-top:22px; color:var(--plum-soft); font-size:13px; letter-spacing:1px;}
 
-  /* ---------------- FINAL (animated hearts) ---------------- */
   .final-gif{position:relative; width:220px; height:220px; display:flex; align-items:center; justify-content:center;}
   .final-heart{font-size:76px; animation:beat 1.1s ease-in-out infinite; z-index:2;}
   @keyframes beat{0%,100%{transform:scale(1);} 50%{transform:scale(1.14);}}
@@ -212,9 +207,28 @@
   .floaty{position:fixed; bottom:-40px; font-size:18px; opacity:0; pointer-events:none; z-index:1;}
   @keyframes floatUp{ 0%{transform:translateY(0) rotate(0deg); opacity:0;} 10%{opacity:.8;} 100%{transform:translateY(-105vh) rotate(30deg); opacity:0;} }
 
-  /* ---------------- tap heart trail ---------------- */
   .tap-heart{position:fixed; font-size:20px; pointer-events:none; z-index:150; animation:tapPop .6s ease-out forwards;}
   @keyframes tapPop{0%{transform:scale(0.4) translateY(0); opacity:1;} 100%{transform:scale(1.4) translateY(-40px); opacity:0;}}
+
+.gif-bubble{
+  width:160px;
+  max-width:60vw;
+  border:none;
+  outline:none;
+  box-shadow:none;
+  margin-bottom:18px;
+  display:block;
+  object-fit:contain;
+  background:transparent;
+}
+
+.gif-bubble.small{
+  width:110px;
+}
+
+.gif-bubble.large{
+  width:220px;
+}
 </style>
 </head>
 <body>
@@ -225,36 +239,39 @@
 
 <div id="soundToggle" onclick="toggleSound()">🔊</div>
 
-<!-- background song: put your song link in place of SONG_URL below in the script -->
 <audio id="bgMusic" preload="auto" loop></audio>
 
-<!-- START -->
+<!--
+  GIF KAHI BHI USE KARNE KA TARIKA (kisi bhi <section class="scene"> ke andar):
+  <img class="gif-bubble" src="APNA_GIF_URL_YAHAN" alt="">
+  - chhota gif chahiye:  class="gif-bubble small"
+  - bada gif chahiye:    class="gif-bubble large"
+-->
+
 <section class="scene active" id="sec-start">
   <div class="fade" style="display:flex;flex-direction:column;align-items:center;">
+    <img class="gif-bubble" src="https://media.tenor.com/UvpVq0eLvR0AAAAi/milk-milk-and-mocha.gif" alt="cute gif">
     <h2 class="title">Ek chhota sa game khelo na 💕</h2>
     <p class="sub">Jeetne ke baad ek surprise milega... par pehle dil jeetne padenge (literally 😉)</p>
     <button class="btn" onclick="beginExperience()">Game Shuru Karo</button>
   </div>
 </section>
 
-<!-- GAME -->
 <section class="scene" id="sec-game">
   <div class="score-bar">Hearts caught: <span id="scoreNum">0</span>/<span id="targetNum">10</span></div>
   <div id="game-area"></div>
   <p class="sub" style="margin-top:16px;">Girte hue dil pe tap karo, jaldi jaldi! 🫶</p>
 </section>
 
-<!-- WIN -->
 <section class="scene" id="sec-win">
   <div class="fade" style="display:flex;flex-direction:column;align-items:center;">
-    <div style="font-size:60px;">🎉💗🎉</div>
+    <img class="gif-bubble" src="https://media.tenor.com/WmOcSEp59_MAAAAi/peach-cat-goma.gif" alt="cute gif">
     <h2 class="title">Tum jeet gayi!</h2>
     <p class="sub">Kyunki tumne mera dil already jeeta hua hai 💗<br>Ab tumhare liye ek surprise hai...</p>
     <button class="btn" onclick="goTo('sec-envelope')">Surprise Kholo</button>
   </div>
 </section>
 
-<!-- ENVELOPE -->
 <section class="scene" id="sec-envelope">
   <div class="envelope-wrap" id="envelopeWrap">
     <div class="envelope">
@@ -266,7 +283,6 @@
   </div>
 </section>
 
-<!-- LETTER -->
 <section class="scene" id="sec-letter">
   <div class="letter-wrap">
     <div class="card fade">
@@ -282,8 +298,11 @@
         <p>Aur agar kabhi galti ho bhi jaye, chhupaunga nahi turant baat karunga.</p>
       </div>
       <div class="sign-off">
-        <span class="line1">Hamesha tumhara,</span>
-        <span class="from">~ M a x</span>
+        <img class="sign-gif" src="https://media.tenor.com/joHowEI9cS8AAAAi/bear-sad.gif" alt="Sad">
+        <div class="sign-text">
+          <span class="line1">Hamesha tumhara,</span>
+          <span class="from">~ M a x</span>
+        </div>
       </div>
     </div>
     <div class="mascot">
@@ -294,7 +313,6 @@
   <button class="btn" style="margin-top:26px;" onclick="goTo('sec-memories'); startMemories();">Aage Dekho</button>
 </section>
 
-<!-- MEMORIES -->
 <section class="scene" id="sec-memories">
   <h2 class="title">Hamari kuch pyaari yaadein</h2>
   <div class="memory-frame fade" id="memoryFrame"></div>
@@ -306,7 +324,6 @@
   <button class="btn" style="margin-top:30px;" onclick="goTo('sec-messages'); startMessages();">Aage Badho</button>
 </section>
 
-<!-- CUTE MESSAGES -->
 <section class="scene" id="sec-messages">
   <div class="msg-card fade" id="msgCard">
     <span class="msg-emoji" id="msgEmoji">💗</span>
@@ -315,21 +332,20 @@
   </div>
 </section>
 
-<!-- FINAL -->
 <section class="scene" id="sec-final">
   <div class="final-gif">
-    <div class="final-heart">💞</div>
+    <img class="gif-bubble" src="https://media.tenor.com/YJr5CLo3jwsAAAAi/cute.gif" alt="kissing">
     <div class="orbit-heart">💗</div>
     <div class="orbit-heart">✨</div>
     <div class="orbit-heart">💕</div>
   </div>
+  
   <div class="final-text">I love you</div>
   <div class="final-sub">aaj, kal, aur hamesha</div>
   <button class="btn" style="margin-top:30px;" onclick="restartExperience()">Phir Se Dekho 🔁</button>
 </section>
 
 <script>
-
 const SONG_URL = "https://pagalnew.com/128-downloads/26457";
 
 const bgMusic = document.getElementById('bgMusic');
@@ -341,7 +357,6 @@ let muted = false;
 let audioUnlocked = false;
 let noteInterval = null;
 
-/* spawn a little floating music-note while the song is actually playing */
 bgMusic.addEventListener('play', ()=>{
   clearInterval(noteInterval);
   noteInterval = setInterval(spawnMusicNote, 2200);
@@ -358,7 +373,7 @@ document.addEventListener('click', unlockAudio, {once:true});
 
 function startMusic(){
   if(muted) return;
-  bgMusic.play().catch(()=>{ /* browser blocked autoplay, will retry on next tap */ });
+  bgMusic.play().catch(()=>{});
 }
 
 function toggleSound(){
@@ -371,7 +386,6 @@ function toggleSound(){
   }
 }
 
-/* ---------------- short sound effects (Web Audio) ---------------- */
 let audioCtx = null;
 function initSfxContext(){
   try{
@@ -453,7 +467,6 @@ function spawnMusicNote(){
   setTimeout(()=>n.remove(), 2300);
 }
 
-/* ================= NAVIGATION ================= */
 function goTo(id){
   document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -479,7 +492,6 @@ function restartExperience(){
   goTo('sec-start');
 }
 
-/* ---------------- tap heart trail ---------------- */
 document.addEventListener('click', function(e){
   const h = document.createElement('div');
   h.className = 'tap-heart';
@@ -490,7 +502,6 @@ document.addEventListener('click', function(e){
   setTimeout(()=>h.remove(), 650);
 });
 
-/* ================= GAME ================= */
 let score = 0;
 const target = 10;
 let spawnInterval;
@@ -548,16 +559,12 @@ function celebrate(){
   }
 }
 
-/* ================= ENVELOPE ================= */
 document.getElementById('envelopeWrap').addEventListener('click', function(){
   this.classList.add('open');
   playWhoosh();
   setTimeout(()=>{ goTo('sec-letter'); }, 700);
 });
 
-/* ================= MEMORIES ================= */
-/* TO ADD YOUR OWN PHOTOS:
-   Replace the photo URL with your own link, and edit the caption text. */
 const memories = [
   {photo:'https://i.ibb.co/Y7xRJ9jN/IMG-20260907-214026.jpg', icon:'', caption:'wo time jab mai Flirt krta tha tumhare saath'},
   {photo:'https://i.ibb.co/93tprJTc/Screenshot-2026-0907-214103.png', icon:'', caption:'Wo din Jab Am ki jagah ki Pm ho gaya tha'},
@@ -593,7 +600,6 @@ function startMemories(){
   memAutoTimer = setInterval(nextMemory, 3200);
 }
 
-/* ================= CUTE MESSAGES ================= */
 const messages = [
   {emoji:'💗', text:'You are the best'},
   {emoji:'🍯', text:'Tum meri sweetie ho'},
@@ -630,7 +636,6 @@ function startMessages(){
   }, 2400);
 }
 
-/* ================= background floating hearts ================= */
 setInterval(()=>{
   const f = document.createElement('div');
   f.className = 'floaty';
